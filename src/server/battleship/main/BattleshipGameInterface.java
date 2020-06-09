@@ -1,3 +1,4 @@
+
 package server.battleship.main;
 
 import java.util.HashSet;
@@ -14,4 +15,12 @@ interface BattleshipGameInterface
 	int getTotalNumOfMissiles();
 	
 	String getMissileSiloType();
+
+	int getCurrentMissileID();
+
+	int getMissileIDAt(int index);
+
+	int getCols();
+
+	int getRows();
 }

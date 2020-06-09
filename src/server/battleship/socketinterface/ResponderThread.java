@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import server.battleship.main.ConfigReader;
 import server.battleship.main.GameConfig;
 import server.battleship.main.GameContainer;
 
@@ -18,7 +19,7 @@ class ResponderThread extends Thread
 	ResponderThread(Socket clientSocket, ServerConfig config)
 	{
 		this.clientSocket = clientSocket;
-		GameConfig gameConfig = GameConfig.read(config.getDefaultGameConfig());
+		GameConfig gameConfig = ConfigReader.read(config.getDefaultGameConfig());
 		this.gameContainer = new GameContainer(gameConfig);
 	}
 
@@ -29,7 +30,6 @@ class ResponderThread extends Thread
 		ObjectOutputStream objectOut = new ObjectOutputStream(clientSocket.getOutputStream());				)
 	{
 		String inputLine;
-
 		while ((inputLine = stringIn.readLine()) != null)
 		{
 			if (inputLine.equals("Bye")) break;
@@ -38,6 +38,6 @@ class ResponderThread extends Thread
 		
 		clientSocket.close();
 	} 
-	catch (IOException e) { e.printStackTrace(); }
+	catch (IOException  e) { }
 	}
 }

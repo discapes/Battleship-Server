@@ -8,13 +8,15 @@ class BattleshipGame implements BattleshipGameInterface
 	
 	private MissileSilo missileSilo;
 	private HashMap<String, HashSet<Block>> shipMap;
-	private GameConfig gameConfig;
+	private int cols;
+	private int rows;
 	
 	public BattleshipGame(MissileSilo missileSilo, HashMap<String, HashSet<Block>> shipMap, GameConfig gameConfig)
 	{
 		this.missileSilo = missileSilo;
 		this.shipMap = shipMap;
-		this.gameConfig = gameConfig;
+		this.cols = gameConfig.getCols();
+		this.rows = gameConfig.getRows();
 	}
 
 	@Override
@@ -33,6 +35,9 @@ class BattleshipGame implements BattleshipGameInterface
 		}
 	}
 	
+	@Override public int getCols() { return this.cols; }
+	@Override public int getRows() { return this.rows; }
+	
 	Missile fireCurrentMissile() { return missileSilo.fireCurrentMissile(); }
 	@Override public String getCurrentMissileName() { return missileSilo.getCurrentMissileName(); }
 	@Override public String getMissileNameAt(int index) { return missileSilo.getMissileNameAt(index); }
@@ -41,4 +46,6 @@ class BattleshipGame implements BattleshipGameInterface
 	@Override public void setCurrentMissile(int missileType) { missileSilo.setCurrentMissile(missileType); }
 
 	@Override public String getMissileSiloType() { return missileSilo.getMissileSiloType(); }
+	@Override public int getMissileIDAt(int index) { return missileSilo.getMissileIDAt(index); }
+	@Override public int getCurrentMissileID() { return missileSilo.getCurrentMissileID(); }
 }

@@ -11,8 +11,10 @@ abstract class MissileSilo implements Serializable {
 	abstract String getCurrentMissileName();
 	String getMissileSiloType() { return missileSiloType; };
 	
-	String getMissileNameAt(int index) { return ""; }
-	int getNumOfMissile(int missileType) { return 0; }
-	int getTotalNumOfMissiles() { return 0; }
+	String getMissileNameAt(int index) { return "error"; }
+	int getNumOfMissile(int missileType) { return -1; }
+	int getTotalNumOfMissiles() { return -1; }
 	void setCurrentMissile(int missileType) {}
+	int getMissileIDAt(int index) { return -1; }
+	int getCurrentMissileID() { return -1; }
 }

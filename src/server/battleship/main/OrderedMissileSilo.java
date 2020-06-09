@@ -17,6 +17,11 @@ class OrderedMissileSilo extends MissileSilo implements Serializable {
 	public String getCurrentMissileName() {
 		return getMissileNameAt(0);
 	}
+	
+	@Override
+	public int getCurrentMissileID() {
+		return getMissileIDAt(0);
+	}
 
 	@Override
 	Missile fireCurrentMissile() {
@@ -27,6 +32,15 @@ class OrderedMissileSilo extends MissileSilo implements Serializable {
 		}
 	}
 
+	@Override
+	public int getMissileIDAt(int index) {
+			try {
+				return missiles.get(index).getValue();
+			} catch (IndexOutOfBoundsException e) {
+				return -1;
+			}
+	}
+	
 	@Override
 	public String getMissileNameAt(int index) {
 			try {

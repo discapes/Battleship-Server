@@ -14,8 +14,8 @@ public class GameContainer
 	
 	public GameContainer(GameConfig gameConfig)
 	{
-		MissileSilo missileSilo = GameConfig.getMissileSilo("missileSiloFile.serial");
-		HashMap<String, HashSet<Block>> shipMap = GameConfig.getShipMap("shipMapFile.serial");
+		MissileSilo missileSilo = ConfigReader.getMissileSilo("missileSiloFile.serial");
+		HashMap<String, HashSet<Block>> shipMap = ConfigReader.getShipMap("shipMapFile.serial");
 		game = new BattleshipGame(missileSilo, shipMap, gameConfig);
 	}
 
@@ -26,6 +26,7 @@ public class GameContainer
 		Class<?>[] argsClasses = parseArgClasses(parsedArgs);
 		try { return game.getClass().getMethod(splitLine[0], argsClasses).invoke(game, parsedArgs);
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {}
+		System.out.println(inputLine);
 		return null;
 	}
 	

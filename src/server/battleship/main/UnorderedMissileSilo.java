@@ -20,12 +20,19 @@ class UnorderedMissileSilo extends MissileSilo implements Serializable {
 	}
 	
 	@Override
+	public int getCurrentMissileID() {
+		return currentMissile.getValue();
+	}
+	
+	@Override
 	public int getNumOfMissile(int missileType) {
 		try {
 		return missileCounts[missileType];
 		} catch (IndexOutOfBoundsException e) {};
 		return -1;
 	}
+	
+	
 	
 	@Override
 	public void setCurrentMissile(int missileType) {
